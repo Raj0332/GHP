@@ -1,0 +1,39 @@
+name: Hello GitHub Actions
+
+# WHEN does this workflow run?
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# WHAT does this workflow do?
+jobs:
+  greet:
+    # WHERE does this job run?
+    runs-on: ubuntu-latest
+
+    # WHAT steps does this job execute?
+    steps:
+      - name: Say Hello
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show runner info
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Arch: $RUNNER_ARCH"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Branch: $GITHUB_REF"
+          echo "Commit SHA: $GITHUB_SHA"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Actor: $GITHUB_ACTOR"
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "Run Number: $GITHUB_RUN_NUMBER"
+
+      - name: Show system info
+        run: |
+          uname -a
+          cat /etc/os-release
+          nproc
+          free -h
+          df -h
